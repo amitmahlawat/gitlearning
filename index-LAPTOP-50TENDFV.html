@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    h1 {color: orange;}
+   form {background-repeat: no-repeat;
+    background-image: url(flower.jpg); width: 396px;
+    background-position: 0%;
+    
+    }
+    .center {
+        ;
+        display:flex;
+        justify-content: center;}
+        
+
+</style>
+
+</head>
+<body>
+
+<div class="center">
+<form action="#" onsubmit="onsignup(event)">
+    <fieldset style="border: 2px solid orange;padding: 10px;width: 40%;" >
+        <h1 style="text-align:center;">Book a Call</h1>
+        <hr>
+<p >Book a call slot and our representative will call you within 1hr of selected time.</p>
+<label for="name",>Name:</label><br>
+<input type="'text",id='name' name="'Name", size="50",><br>
+<label for="email">Email:</style></label><br>
+<input type="'text", name="'email",id='email' size="50"><br>
+<label for="phone",>Phone:</label><br>
+<input type="'text", name="'phone",id='phone' size="50"><br>
+<label for="time for call",>Time For Call:</label><br>
+<input type="date", name="'time for call", size="25">
+<input type='time' size="35"><br><br>
+<button style="background-color: orange;">GET A CALL</button>
+
+</fieldset>
+</form> 
+</div>
+<script> function onsignup(event){
+    event.preventDefault();
+    console.log(event.target.Name.value);
+}
+
+
+</script>
+</body>
+
+
+    
+    
+    
+</body>
+</html>
