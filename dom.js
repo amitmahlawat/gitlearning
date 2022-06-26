@@ -51,7 +51,10 @@ class Member extends user{
               membershipactivetillYear,
               membershipactivetillMonth +1, //just increase the month by 1
               membershipactivetillDay
-            );}
+            );
+            console.log("membershiptilldate",this.membershipactivetilldate)
+        }
+            
             subscriptionActiveTill() {
                 console.log(
                   this.username +
@@ -75,5 +78,6 @@ class Member extends user{
 let mike2 = new Member('mike2','mike2@gmail.com','1232','yearly');
 let mike = new Member('mike','mike@gmail.com','123','yearly');
 mike2.renewMembership();
-console.log(mike2.membershipactivetilldate);
-
+// console.log(mike2.membershipactivetilldate);
+// mike2.renewMembership();
+// console.log(mike2.membershipactivetilldate);
