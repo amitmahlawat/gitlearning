@@ -18,6 +18,7 @@
 
 
     </form>
+    <ul id="ListOfUsers"></ul>
     <script>
         function storeinlocalestorage(event){
             event.preventDefault()
@@ -31,7 +32,13 @@
                 name,
                 email,
                 Phone} 
-        localStorage.setItem('userdetails',JSON.stringify(obj))
+        localStorage.setItem(obj.email,JSON.stringify(obj))
+        ShowNewUsersOnScreen(obj)
+        }
+        function ShowNewUsersOnScreen(obj){
+            const ParentNode = document.getElementById('ListOfUsers');
+            const ChildHTML = `<li> ${obj.name}-${obj.email}</li>`
+            ParentNode.innerHTML =  ChildHTML+ ParentNode.innerHTML
         }
 
     </script>
