@@ -9,11 +9,11 @@
 <body>
     <form onsubmit="storeinlocalestorage(event)">
         <label >Name</label>
-        <input type="text" name="username" id="" required>
+        <input id='username' type="text" name="username" id="" required>
         <label for="">email</label>
-        <input type="email" name="emailid" id="" required>
+        <input id='email' type="email" name="emailid" id="" required>
         <label for="">Phonenumber</label>
-        <input type="tel" name="Phonenumber" id="" required>
+        <input id='phonenumber' type="tel" name="Phonenumber" id="" required>
         <button>Submit</button>
 
 
@@ -35,10 +35,38 @@
         localStorage.setItem(obj.email,JSON.stringify(obj))
         ShowNewUsersOnScreen(obj)
         }
-        function ShowNewUsersOnScreen(obj){
+        function ShowNewUsersOnScreen(user){
+
+            if(localStorage.getItem(user.email)!=null){
+                removeUserFromScreen(user.email);
+            }
             const ParentNode = document.getElementById('ListOfUsers');
-            const ChildHTML = `<li> ${obj.name}-${obj.email}</li>`
+            const ChildHTML = `<li id=${user.email}> ${user.name}-${user.email} 
+                 <button onclick=deleteUser('${user.email}')> Delete User</button>
+                 <button onclick=EditUserDetails('${user.email}','${user.name}','${user.Phonenumber}')>Edit</button>
+                </li>`
             ParentNode.innerHTML =  ChildHTML+ ParentNode.innerHTML
+        }
+        function EditUserDetails(email, name, phonenumber){
+                document.getElementById('email').value = email;
+                document.getElementById('username').value = name;
+                document.getElementById('phonenumber').value = phonenumber;
+                deleteUser(email)
+               
+
+            }
+
+        function deleteUser(email){
+            localStorage.removeItem(email)
+            removeUserFromScreen(email)
+        }
+        function removeUserFromScreen(email){
+            const ParentNode = document.getElementById('ListOfUsers');
+            const ChildNodeToBeDeleted =document.getElementById(email)
+            if(ChildNodeToBeDeleted){
+                ParentNode.removeChild(ChildNodeToBeDeleted);
+            }
+            
         }
 
     </script>
