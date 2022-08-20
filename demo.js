@@ -157,29 +157,31 @@ newDiv.setAttribute('title','hello div')
 
 // create text node
 
-var newDivText= document.createTextNode('Hello World')
+// var newDivText= document.createTextNode('Hello World')
 
-// add text to div
+// // add text to div
 
-newDiv.appendChild(newDivText);
+// newDiv.appendChild(newDivText);
 
-var container= document.querySelector('header .container');
-var h1= document.querySelector('header .h1')
+// var container= document.querySelector('header .container');
+// var h1= document.querySelector('header .h1')
 
-// console.log(newDiv);
-newDiv.style.fontSize= '30px'
+// // console.log(newDiv);
+// newDiv.style.fontSize= '30px'
 
-container.insertBefore(newDiv, h1);
+// container.insertBefore(newDiv, h1);
 
-var nuDiv=document.createElement('div');
-nuDiv.className='HEllo'
-nuDiv.id= 'HEllo 2'
-nuDiv.setAttribute('title', 'HEllo WORld');
-var nuDIvText= document.createTextNode('HEllo World');
-nuDiv.appendChild(nuDIvText);
-// console.log(nuDiv);
+// var nuDiv=document.createElement('div');
+// nuDiv.className='HEllo'
+// nuDiv.id= 'HEllo 2'
+// nuDiv.setAttribute('title', 'HEllo WORld');
+// var nuDIvText= document.createTextNode('HEllo World');
+// nuDiv.appendChild(nuDIvText);
+// // console.log(nuDiv);
 
-var item= document.getElementById('items');
 
-item.insertBefore(nuDiv, h1);
- 
+// var item= document.getElementById('items');
+
+
+// item.insertBefore(nuDIvText, h1)
+//  contans.insertBefore(nuDIv, li)
