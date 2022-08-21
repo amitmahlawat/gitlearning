@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="storeinlocalestorage(event)">
+        <label for="amount">choose expense amount:</label>
+        <input type="number" id='amount' name="Amount" size="20">
+        <label for="name">choose category:</label>
+        <select name="description" id="description">
+            <option value="petrol">petrol</option>
+            <option value="diesel">diesel</option>
+            <option value="car">car</option>
+            <option value="mobile">mobile</option>
+        </select>
+        <label for="name">choose description:</label>
+        <select name="category" id="category">
+            <option value="food">food</option>
+            <option value="recharge">recharge</option>
+            <option value="movie">movie</option>
+            <option value="mobile">mobile</option>
+        </select>
+
+        <input type="submit">
+    </form>
+ 
+
+
+
+
+    <ul id="listofobj"></ul>
+
+
+    <script src="expensTracker.js"></script>
+</body>
+
+</html>
