@@ -49,3 +49,6 @@ function removeUserFromScreen(id){
     }
     
 }
+
+var button = document.getElementById("Age");
+console.log(button)

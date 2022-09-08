@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="storeinlocalestorage(event)">
+        <label>Name:</label>
+        <input type="text" id="name" name="Name" required>
+    <label>Age:</label>
+    <input type="text" id="age" name="Age" required>
+    <label>Gender:</label>
+<input type="text" name="gender" id="Gender">
+<button>Submit</button> 
+    </form>
+    <ul id="listOfObjects"></ul>
+    <script>
+        function storeinlocalestorage(event){
+            event.preventDefault()
+            const name=event.target.name.value
+            const age=event.target.age.value
+            const gender=event.target.gender.value
+            const id= Math.floor(Date.now() / 1000)
+
+            const obj={
+                name,
+                age,
+                gender,
+                id
+            }
+            localStorage.setItem(obj.id,JSON.stringify(obj))
+            ShowNewUsersOnScreen(obj)
+        }
+        function ShowNewUsersOnScreen(obj){
+            if(localStorage.getItem(obj.id)!=null){
+                removeUserFromScreen(obj.id);
+            }
+            const ParentNode=document.getElementById("listOfObjects")
+            const ChildHTML=`<li id=${obj.id}> ${obj.name}--${obj.age}--${obj.gender}
+            <button onclick=deleteUser('${obj.id}') >Delete Item</button>
+            <button onclick=EditUserDetails("${obj.id}"), ("${obj.name}"),("${obj.age}"),("${obj.gender}")>Edit</button>
+                </li>`
+                ParentNode.innerHTML =  ChildHTML+ ParentNode.innerHTML
+        }
+        function EditUserDetails(id, name, age,gender){
+        document.getElementById('name').value = name;
+        document.getElementById('age').value = age;
+        document.getElementById('gender').value = gender;
+        deleteUser(id)
+       
+
+    }
+
+function deleteUser(id){
+    localStorage.removeItem(id)
+    removeUserFromScreen(id)
+}
+function removeUserFromScreen(id){
+    const ParentNode = document.getElementById('listofobj');
+    const ChildNodeToBeDeleted =document.getElementById(id)
+    if(ChildNodeToBeDeleted){
+        ParentNode.removeChild(ChildNodeToBeDeleted);
+    }
+    
+}
+
+    </script>
+    
+</body>
+</html>
