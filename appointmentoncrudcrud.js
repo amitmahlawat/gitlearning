@@ -7,7 +7,7 @@ window.onload=function(){
     //     ParentNode.innerHTML=ParentNode.innerHTML+ChildNode
 
     // }
-    axios.get("https://crudcrud.com/api/d191fe0a7a994b209c12e31226d87207/appointmentdata").then((res)=>{
+    axios.get("https://crudcrud.com/api/515cb0a76e2e484184ac1a650c0fe4f9/appointmentdata").then((res)=>{
         
         for (let i=0;i<res.data.length;i++){
             ShowUserOnScreen(res.data[i])
@@ -34,9 +34,9 @@ function SubmitData(event){
     document.getElementById("Username").value='';
     document.getElementById("Emailid").value='';
     ShowUserOnScreen(obj)
-    axios.post("https://crudcrud.com/api/d191fe0a7a994b209c12e31226d87207/appointmentdata",obj)
+    axios.post("https://crudcrud.com/api/515cb0a76e2e484184ac1a650c0fe4f9/appointmentdata",obj)
     .then((res)=>{
-        // console.log(res)
+        // console.log(res.data)
 
     })
     .catch((err=>{
@@ -50,7 +50,8 @@ function SubmitData(event){
 
 function ShowUserOnScreen(user){
     var ParentNode=document.getElementById('Items')
-    var ChildNode=`<li id=${user.Email}>${user.Name}--${user.Email}<button onclick=EditUserDetails('${user.Name}','${user.Email}')>Edit</button><button onclick=DeleteUserFromScreen('${user.Email}')>Delete</button> </li>`
+    var ChildNode=`<li id=${user._id}>${user.Name}--${user.Email}<button onclick=EditUserDetails('${user.Name}','${user.Email}')>Edit</button>
+    <button onclick=DeleteUserFromScreen('${user._id}')>Delete</button> </li>`
     if(localStorage.getItem(user.Email)!==null){
         DeleteUserFromScreen(user.Email)
         ParentNode.innerHTML=ParentNode.innerHTML+ChildNode
@@ -69,12 +70,19 @@ function EditUserDetails(Name,Email){
 
 
 }
-function DeleteUserFromScreen(Email){
+function DeleteUserFromScreen(userid){
+    axios.delete(`https://crudcrud.com/api/515cb0a76e2e484184ac1a650c0fe4f9/appointmentdata/${userid}`)
+    .then((res)=>{
+        ShowUserOnScreen(res)
+    }).catch((err)=>{
+        console.log(err)
+    })
     var ParentNode=document.getElementById('Items')
-    var ChildNodeToBeDeleted=document.getElementById(Email)
+    var ChildNodeToBeDeleted=document.getElementById(userid)
     if(ChildNodeToBeDeleted){
         ParentNode.removeChild(ChildNodeToBeDeleted)
     }
     
-    localStorage.removeItem(Email)
+    
+    localStorage.removeItem(userid)
 }
