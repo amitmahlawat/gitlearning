@@ -7,7 +7,7 @@ window.onload=function(){
     //     ParentNode.innerHTML=ParentNode.innerHTML+ChildNode
 
     // }
-    axios.get("https://crudcrud.com/api/515cb0a76e2e484184ac1a650c0fe4f9/appointmentdata").then((res)=>{
+    axios.get("https://crudcrud.com/api/63531a1bb84a4a168a104fddfe5c8559/appointmentdata").then((res)=>{
         
         for (let i=0;i<res.data.length;i++){
             ShowUserOnScreen(res.data[i])
@@ -34,9 +34,9 @@ function SubmitData(event){
     document.getElementById("Username").value='';
     document.getElementById("Emailid").value='';
     ShowUserOnScreen(obj)
-    axios.post("https://crudcrud.com/api/515cb0a76e2e484184ac1a650c0fe4f9/appointmentdata",obj)
+    axios.post("https://crudcrud.com/api/63531a1bb84a4a168a104fddfe5c8559/appointmentdata",obj)
     .then((res)=>{
-        // console.log(res.data)
+        console.log(res.data)
 
     })
     .catch((err=>{
@@ -50,7 +50,7 @@ function SubmitData(event){
 
 function ShowUserOnScreen(user){
     var ParentNode=document.getElementById('Items')
-    var ChildNode=`<li id=${user._id}>${user.Name}--${user.Email}<button onclick=EditUserDetails('${user.Name}','${user.Email}')>Edit</button>
+    var ChildNode=`<li id=${user._id}>${user.Name}--${user.Email}<button onclick=EditUserDetails('${user.Name}','${user.Email}','${user._id}')>Edit</button>
     <button onclick=DeleteUserFromScreen('${user._id}')>Delete</button> </li>`
     if(localStorage.getItem(user.Email)!==null){
         DeleteUserFromScreen(user.Email)
@@ -62,18 +62,28 @@ function ShowUserOnScreen(user){
     
 }
 
-function EditUserDetails(Name,Email){
+function EditUserDetails(Name,Email,userid){
     document.getElementById('Username').value=Name
     document.getElementById('Emailid').value=Email
     localStorage.removeItem(Email)
-    DeleteUserFromScreen(Email)
+    DeleteUserFromScreen(userid)
+    let obj={
+        Name: Name,
+        Email:Email
+    }
+    axios.put(`https://crudcrud.com/api/63531a1bb84a4a168a104fddfe5c8559/appointmentdata/${userid}`,obj)
+    .then((res)=>{
+        ShowUserOnScreen(res)
+    }).catch((err)=>{
+        console.log(err)
+    })
 
 
 }
 function DeleteUserFromScreen(userid){
-    axios.delete(`https://crudcrud.com/api/515cb0a76e2e484184ac1a650c0fe4f9/appointmentdata/${userid}`)
+    axios.delete(`https://crudcrud.com/api/63531a1bb84a4a168a104fddfe5c8559/appointmentdata/${userid}`)
     .then((res)=>{
-        ShowUserOnScreen(res)
+        // ShowUserOnScreen(res)
     }).catch((err)=>{
         console.log(err)
     })
