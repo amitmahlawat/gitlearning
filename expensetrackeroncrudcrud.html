@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="SubmitData(event)">
+        <label for="amount">choose expense amount:</label>
+        <input type="number" id='amount' name="Amount" size="20">
+        <label for="name">choose category:</label>
+        <select name="description" id="category">
+            <option value="petrol">car</option>
+            <option value="diesel">home</option>
+            <option value="car">bike</option>
+            <option value="mobile">mobile</option>
+        </select>
+        <label for="name">choose description:</label>
+        <select name="category" id="description">
+            <option value="food">food</option>
+            <option value="recharge">recharge</option>
+            <option value="movie">movie</option>
+            <option value="mobile">fuel</option>
+        </select>
+
+        <button>Submit</button>
+    </form>
+ 
+
+
+
+
+    <ul id="Items"></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="expensetrackeroncrudcrud.js"></script>
+</body>
+
+</html>

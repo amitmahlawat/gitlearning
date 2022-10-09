@@ -38,9 +38,20 @@ class BinarySearchTree {
             console.log("not found")
         }
     }
+    
 }
 
-
+let preOrderTraversal=function(root){
+    if(!root) return [];
+    const stack=[root];
+    const result=[];
+    while (stack.length){
+        let node=stack.pop();
+        result.push(node.val);
+        if(node.right) stack.push(node.right)
+        if(node.left) stack.push(node.left)
+    }return result
+}
 
 function searchNode(node, value) {
     if(node==null){
@@ -79,9 +90,9 @@ function insertnode(node, newnode) {
 }
 
 s1 = new BinarySearchTree()
-// s1.insert(6)
+s1.insert(6)
 // console.log(s1)
-// s1.insert(4)
+s1.insert(4)    
 // console.log(s1)
 
 // s1.insert(5)
@@ -93,4 +104,6 @@ s1.insert(10)
 console.log(s1)
 
     //  s1.search(4)
-     s1.search(12)
+    //  s1.search(12)
+
+    console.log(preOrderTraversal(6))

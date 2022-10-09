@@ -8,6 +8,7 @@ window.onload=function(){
 
     }
 }
+  
 
 
 
@@ -25,14 +26,7 @@ function SubmitData(event){
     document.getElementById("Username").value='';
     document.getElementById("Emailid").value='';
     ShowUserOnScreen(obj)
-    axios.post("https://crudcrud.com/api/d191fe0a7a994b209c12e31226d87207/appointmentdata",obj)
-    .then((res)=>{
-        console.log(res)
-
-    })
-    .catch((err=>{
-        console.log(err)
-    }))
+   
 
 
 
